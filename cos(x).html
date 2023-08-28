@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      /*It only works on full screen*/
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        
+        body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        }
+        
+        .container {
+        width: 100%; height: 200px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .ball {
+        width: 10px; height: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 20 0 #fff;
+        border-radius: 50%;
+        padding: 1px;
+        margin: 0px;
+        margin-top: 0%;
+        margin-left: -5px;
+        }
+
+        @keyframes ball1 {
+            0% {
+                margin-top: 10%;
+            }
+            50% {
+                margin-top: 90%;
+            }
+            100% {
+                margin-top: 10%;
+            }
+        }
+
+        .line {
+            position: absolute;
+            width: 100%; height: 3px;
+            background: #fff;
+            border: 1px solid #fff;
+            animation: ball1 3s ease-in-out 0s infinite;
+        }
+
+        .circle {
+            position: absolute;
+            width: 470px; height: 470px;
+            margin-top: 590px;
+            margin-left: -620px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .rotateline {
+            position: absolute;
+            margin-top: 590px;
+            margin-left: 554px;
+            width: 235px; height: 3px;
+            transform-origin: 0% 100%;
+            background: #fff;
+            border: 1px solid #fff;
+            animation: rotateline 3s linear 0s infinite;
+        }
+
+        @keyframes rotateline {
+            0% {
+                transform:
+                translateX(-470px)
+                rotateZ(-90deg);
+            }
+            100% {
+                transform:
+                translateX(-470px)
+                rotateZ(270deg);
+            }
+        }
+
+        .xline {
+            width: 3px; height: 120%;
+            background: #fff;
+            position: absolute;
+            margin-top: 530px;
+            margin-left: -1090px;
+        }
+
+        .smallcircle {
+            width: 10px; height: 10px;
+            position: absolute;
+            margin-top: 590px;
+            margin-left: -620px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            background: #ccc;
+            box-shadow: 0 0 20 0 #fff;
+            animation: smallcircle 3s linear 0s infinite;
+        }
+
+        @keyframes smallcircle {
+            0% {
+                transform:
+                rotate(0deg)
+                translateX(-18px)
+                translateY(-235px);
+            }
+            100% {
+                transform:
+                rotate(360deg)
+                translateX(-18px)
+                translateY(-235px);
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="line"></div>
+    <div class="circle"></div>
+    <div class="xline"></div>
+    <div class="rotateline"></div>
+    <div class="smallcircle"></div>
+    <script>
+        const container = document.createElement("div");
+        container.className = "container";
+        document.body.appendChild(container);
+
+        for (let i = 1; i < 220; i++) {
+            const div = document.createElement("div");
+            div.className = `ball ball${i}`;
+            container.appendChild(div);
+        }
+
+        for (let a = 1; a < 220; a++) {
+        const style = document.createElement("style");
+        style.textContent = `
+            .ball${a} { margin-top: 10%;
+            animation: ball1 3s ease-in-out ${0.02 * (a - 1)}s infinite;
+            }`;
+
+        document.head.appendChild(style);
+        }
+
+    </script>
+  </body>
+</html>
