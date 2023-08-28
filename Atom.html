@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+      }
+      
+      .atom {
+        position: relative;
+        display: flex;
+        width: 300px; height: 300px;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .atom::before {
+        content: "";
+        position: absolute;
+        width: 30px; height: 30px;
+        background: transparent;
+        box-shadow: inset 0 0 5px #fff;
+        border-radius: 50%;
+      }
+      
+      .line {
+        width: 100%; height: 100%;
+        position: absolute;
+        opacity: 0.8;
+      }
+  
+      .line-1 {
+        --line1-color: yellow;
+        width: 80%; height: 80%;
+        border-radius: 50%;
+        border-bottom: 10px solid var(--line1-color);
+        border-top: 10px solid var(--line1-color);
+        animation: line-1 5s linear infinite;
+        filter: drop-shadow(0 0 10px var(--line1-color));
+      }
+      
+      @keyframes line-1 {
+        0% {
+          transform: rotateX(0deg) rotateY(70deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(430deg) rotateZ(360deg);
+        }
+      }
+
+      .line-2 {
+        --line2-color: skyblue;
+        width: 90%; height: 90%;
+        border-radius: 50%;
+        border-bottom: 10px solid var(--line2-color);
+        border-top: 10px solid var(--line2-color);
+        animation: line-2 6s linear infinite;
+        filter: drop-shadow(0 0 10px var(--line2-color));
+      }
+
+      @keyframes line-2 {
+        0% {
+          transform: rotateX(120deg) rotateY(-50deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(480deg) rotateY(310deg) rotateZ(360deg);
+        }
+      }
+      
+      .line-3 {
+        --line3-color: hotpink;
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        border-bottom: 10px solid var(--line3-color);
+        border-top: 10px solid var(--line3-color);
+        animation: line-3 7s linear infinite;
+        filter: drop-shadow(0 0 10px var(--line3-color));
+      }
+
+      @keyframes line-3 {
+        0% {
+          transform: rotateX(240deg) rotateY(-170deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(600deg) rotateY(190deg) rotateZ(360deg);
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="atom">
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+      <div class="line line-3"></div>
+    </div>
+  </body>
+</html>
