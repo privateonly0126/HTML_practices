@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Website name</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--getting css file is not working on ipad for some reason so made with only HTML file-->
+
+  <style>
+    :root {
+      --blue: #7b9acc;
+      --white: #FCF6F5;
+      --footerline: #5f93e7;
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background: var(--blue);
+    }
+
+    #wrap {
+      min-height: 100vh;
+      position: relative;
+      width: 100%;
+    }
+
+    /* clearfix */
+    .row::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    [class *="col-"] {
+      float: left;
+      padding: 15px;
+      border: 1px solid var(--white);
+    }
+
+    /* gridview column */
+    .col-1 {
+      width: 8.33%
+    }
+
+    .col-2 {
+      width: 16.66%
+    }
+
+    .col-3 {
+      width: 25%
+    }
+
+    .col-4 {
+      width: 33.33%
+    }
+
+    .col-5 {
+      width: 41.33%
+    }
+
+    .col-6 {
+      width: 50%
+    }
+
+    .col-7 {
+      width: 58.33%
+    }
+
+    .col-8 {
+      width: 66.33%
+    }
+
+    .col-9 {
+      width: 75%
+    }
+
+    .col-10 {
+      width: 83.33%
+    }
+
+    .col-11 {
+      width: 91.33%
+    }
+
+    .col-12 {
+      width: 100%
+    }
+
+    /* header */
+    .header {
+      background-color: var(--blue);
+    }
+
+    .header h1 {
+      padding: 170px;
+      padding-bottom: 0px;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .header h3 {
+      color: var(--white);
+      text-align: center;
+      padding-bottom: 100px;
+    }
+
+    /* navigation bar */
+    .navbar {
+      position: sticky;
+      top: 0px;
+    }
+
+    div.navbar {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    ul {
+      padding-top: 0;
+      padding-bottom: 0;
+      list-style: none;
+      background-color: var(--white);
+      overflow: hidden;
+    }
+
+    li {
+      float: left;
+      font-size: 20px;
+    }
+
+    li.menu {
+      float: right;
+    }
+
+    li h4 {
+      display: block;
+      color: var(--blue);
+      text-align: center;
+      text-decoration: none;
+      padding: 35px 30px;
+    }
+
+    li a {
+      border-radius: 7%;
+      display: block;
+      color: var(--blue);
+      text-align: center;
+      text-decoration: none;
+      padding: 35px 30px;
+    }
+
+    li a:hover {
+      background-color: var(--blue);
+      color: var(--white);
+      transition: 0.5s;
+      transform: translateY(-10px);
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      div.header h1 {
+        padding: 70px;
+        padding-bottom: 0px;
+      }
+
+      li a {
+        border-top: 1px solid var(--blue);
+      }
+
+
+      .header h3 {
+        padding-bottom: 50px;
+      }
+
+      li.logo {
+        width: 100%;
+      }
+
+      li.menu {
+        width: 25%;
+      }
+
+      li a {
+        border-radius: 0%;
+        width: 100% height: 10px;
+        padding: 10px 2px;
+      }
+
+      li a:hover {
+        transform: translateY(0);
+      }
+    }
+
+    /* section */
+    .section {
+      padding-bottom: 200px;
+      background: var(--white);
+    }
+
+    .aside1,
+    .main {
+      background-color: var(--white);
+      color: var(--blue);
+      border: 1px solid var(--white);
+      text-align: center;
+    }
+
+    .aside1 {
+      border-right: 1px solid var(--blue);
+    }
+
+    div.aside1 div {
+      content: "";
+      width: 80%;
+      height: 500px;
+      margin: auto;
+      margin-top: 10px;
+    }
+
+    div.main div {
+      content: "";
+      width: 80%;
+      height: 500px;
+      margin: auto;
+      margin-top: 10px;
+    }
+
+    /* footer */
+    footer {
+      padding-top: 15px;
+      color: var(--white);
+      background-color: var(--blue);
+      width: 100%;
+      height: 200px;
+      bottom: 0px;
+      position: absolute;
+      border-top: 1px solid var(--footerline);
+    }
+
+    nav a {
+      padding-left: 20px;
+    }
+
+    footer a {
+      display: inline-block;
+      margin: 0 20 10 20;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    footer p span {
+      display: inline-block;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div ID='wrap'>
+    <div class="section">
+
+      <!--navigation bar-->
+      <div class="navbar">
+        <ul>
+          <li class="logo">
+            <h4>Name</h4>
+          </li>
+          <li class="menu"><a href="#Settings">Settings</a></li>
+          <li class="menu"><a href="#Analysis">Analysis</a></li>
+          <li class="menu"><a href="#Library">Library</a></li>
+          <li class="menu"><a href="#Home">Home</a></li>
+        </ul>
+      </div>
+
+      <!--header-->
+      <div class="header" id="home">
+        <h1>Some Website</h1>
+        <h3>responsive website (~600px)</h3>
+      </div>
+
+      <!--content-->
+      <div class="row">
+        <div class="section">
+          <div class="aside1 col-3">aside1
+            <div></div>
+          </div>
+          <div class="main col-9">main
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer>
+      <nav>
+        <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
+        <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
+      </nav>
+      <p>
+        <span>만든넘 : privateonly0126</span><br/>
+        <span>이메일 : privateonly0126@gmail.com</span><br/>
+        <span>저작권이 어쩌구 저쩌구</span>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>
