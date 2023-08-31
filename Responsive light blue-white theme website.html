@@ -135,7 +135,7 @@
     }
 
     li.menu {
-      float: right;
+      float: left;
     }
 
     li h4 {
@@ -153,6 +153,10 @@
       text-align: center;
       text-decoration: none;
       padding: 35px 30px;
+    }
+
+    .listwrap {
+      float: right;
     }
 
     li a:hover {
@@ -271,45 +275,54 @@
           <li class="logo">
             <h4>Name</h4>
           </li>
-          <li class="menu"><a href="#Settings">Settings</a></li>
-          <li class="menu"><a href="#Analysis">Analysis</a></li>
-          <li class="menu"><a href="#Library">Library</a></li>
-          <li class="menu"><a href="#Home">Home</a></li>
-        </ul>
+          `
+          <!--navigation bar-->
+          <div class="navbar">
+            <ul>
+              <li class="logo">
+                <h4>Name</h4>
+              </li>
+              <div class="listwrap">
+                <li class="menu"><a href="#Home">Home</a></li>
+                <li class="menu"><a href="#Library">Library</a></li>
+                <li class="menu"><a href="#Analysis">Analysis</a></li>
+                <li class="menu"><a href="#Settings">Settings</a></li>
+              </div>
+            </ul>
+          </div>
+
+          <!--header-->
+          <div class="header" id="home">
+            <h1>Some Website</h1>
+            <h3>responsive website (~600px)</h3>
+          </div>
+
+          <!--content-->
+          <div class="row">
+            <div class="section">
+              <div class="aside1 col-3">aside1
+                <div></div>
+              </div>
+              <div class="main col-9">main
+                <div></div>
+              </div>
+            </div>
+          </div>
       </div>
 
-      <!--header-->
-      <div class="header" id="home">
-        <h1>Some Website</h1>
-        <h3>responsive website (~600px)</h3>
-      </div>
-
-      <!--content-->
-      <div class="row">
-        <div class="section">
-          <div class="aside1 col-3">aside1
-            <div></div>
-          </div>
-          <div class="main col-9">main
-            <div></div>
-          </div>
-        </div>
-      </div>
+      <!--footer-->
+      <footer>
+        <nav>
+          <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
+          <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
+        </nav>
+        <p>
+          <span>만든넘 : privateonly0126</span><br/>
+          <span>이메일 : privateonly0126@gmail.com</span><br/>
+          <span>저작권이 어쩌구 저쩌구</span>
+        </p>
+      </footer>
     </div>
-
-    <!--footer-->
-    <footer>
-      <nav>
-        <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
-        <a href='https://url.kr/lvzgw8' target='_blank'>some link</a>
-      </nav>
-      <p>
-        <span>만든넘 : privateonly0126</span><br/>
-        <span>이메일 : privateonly0126@gmail.com</span><br/>
-        <span>저작권이 어쩌구 저쩌구</span>
-      </p>
-    </footer>
-  </div>
 </body>
 
 </html>
