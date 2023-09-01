@@ -5,13 +5,14 @@
   <title>Website name</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--getting css file is not working on ipad for some reason so made with only HTML file-->
+  <!--아이패드로 css파일 불러오는거 안돼서 html만 씀-->
 
   <style>
     :root {
       --blue: #7b9acc;
       --white: #FCF6F5;
       --footerline: #5f93e7;
+      --lightblue: #aec9f3;
     }
 
     * {
@@ -22,7 +23,7 @@
     }
 
     body {
-      background: var(--blue);
+      background: var(--white);
     }
 
     #wrap {
@@ -31,7 +32,7 @@
       width: 100%;
     }
 
-    /* clearfix */
+    /* 클리어픽스 */
     .row::after {
       content: '';
       display: table;
@@ -44,7 +45,7 @@
       border: 1px solid var(--white);
     }
 
-    /* gridview column */
+    /* 그리드 칼럼 너비설정 */
     .col-1 {
       width: 8.33%
     }
@@ -93,13 +94,13 @@
       width: 100%
     }
 
-    /* header */
+    /* 헤더 */
     .header {
       background-color: var(--blue);
     }
 
     .header h1 {
-      padding: 170px;
+      padding: 250px;
       padding-bottom: 0px;
       color: var(--white);
       text-align: center;
@@ -108,12 +109,13 @@
     .header h3 {
       color: var(--white);
       text-align: center;
-      padding-bottom: 100px;
+      padding-bottom: 150px;
     }
 
-    /* navigation bar */
+    /* 내비게이션바 */
     .navbar {
-      position: sticky;
+      width: 100%;
+      position: fixed;
       top: 0px;
     }
 
@@ -121,7 +123,7 @@
       border-bottom: 1px solid var(--blue);
     }
 
-    ul {
+    .navbar ul {
       padding-top: 0;
       padding-bottom: 0;
       list-style: none;
@@ -129,24 +131,25 @@
       overflow: hidden;
     }
 
-    li {
+    .navbar li {
       float: left;
       font-size: 20px;
     }
 
-    li.menu {
+    .navbar li.menu {
       float: left;
     }
 
-    li h4 {
+    .navbar li h4 {
       display: block;
       color: var(--blue);
       text-align: center;
       text-decoration: none;
       padding: 35px 30px;
+      margin-left: 50px;
     }
 
-    li a {
+    .navbar li a {
       border-radius: 7%;
       display: block;
       color: var(--blue);
@@ -159,21 +162,26 @@
       float: right;
     }
 
-    li a:hover {
+    .navbar li a:hover {
       background-color: var(--blue);
       color: var(--white);
       transition: 0.5s;
       transform: translateY(-10px);
     }
 
-    /* responsive */
-    @media (max-width: 600px) {
+    /* 반응형 웹 */
+    @media (max-width: 650px) {
+      .sideMenu li:first-child {
+        margin-top: 80px;
+      }
+
       div.header h1 {
+        margin-top: 100px;
         padding: 70px;
         padding-bottom: 0px;
       }
 
-      li a {
+      .navbar li a {
         border-top: 1px solid var(--blue);
       }
 
@@ -182,26 +190,26 @@
         padding-bottom: 50px;
       }
 
-      li.logo {
+      .navbar li.logo {
         width: 100%;
       }
 
-      li.menu {
+      .navbar li.menu {
         width: 25%;
       }
 
-      li a {
+      .navbar li a {
         border-radius: 0%;
         width: 100% height: 10px;
         padding: 10px 2px;
       }
 
-      li a:hover {
+      .navbar li a:hover {
         transform: translateY(0);
       }
     }
 
-    /* section */
+    /* 섹션 */
     .section {
       padding-bottom: 200px;
       background: var(--white);
@@ -235,7 +243,7 @@
       margin-top: 10px;
     }
 
-    /* footer */
+    /* 푸터 */
     footer {
       padding-top: 15px;
       color: var(--white);
@@ -262,11 +270,118 @@
       display: inline-block;
       padding-left: 20px;
     }
+
+    /* 사이드메뉴 */
+    .sideMenu {
+      position: fixed;
+      top: 0;
+      left: -25%;
+      width: 25%;
+      height: 100%;
+      background: var(--skyblue);
+      z-index: 10;
+      transition: ease 0.7s;
+      overflow-Y: auto;
+    }
+
+    .sideMenu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--lightblue);
+    }
+
+    .sideMenu li {
+      text-align: center;
+    }
+
+    .sideMenu li a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 20px 0px;
+    }
+
+    .sideMenu li:first-child {
+      display: block;
+      padding: 31px 0px;
+      padding-bottom: 32px;
+      color: var(--white);
+      background: var(--blue);
+      font-size: 25px;
+      font-weight: bold;
+      border: none;
+    }
+
+    .sideMenu li:nth-child(2) {
+      border-top: 1px solid var(--lightblue);
+    }
+
+    .sideMenu a:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .menuIcon {
+      position: fixed;
+      top: 31px;
+      left: 30px;
+      cursor: pointer;
+      z-index: 30;
+    }
+
+    .bar {
+      width: 30px;
+      height: 3px;
+      background: var(--blue);
+      margin: 5px 0;
+      transition: 0.5s;
+    }
+
+    /* 아이콘 변경 애니메이션 */
+    .change .bar:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+      background: var(--white);
+    }
+
+    .change .bar:nth-child(2) {
+      background: var(--white);
+      opacity: 0%;
+    }
+
+    .change .bar:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+      background: var(--white);
+    }
+
+    .sideMenu ul {
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
   <div ID='wrap'>
+    <div class="sideMenu">
+      <div class="menuIcon" id="menuIcon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="sideMenu" id="sideMenu">
+        <ul>
+          <li>Menu</li>
+          <li><a href="#">menu1</a></li>
+          <li><a href="#">menu2</a></li>
+          <li><a href="#">menu3</a></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="section">
 
       <!--navigation bar-->
@@ -316,6 +431,24 @@
       </p>
     </footer>
   </div>
+
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const sideMenu = document.getElementById('sideMenu');
+
+    let isOpen = false; //첨에 닫혀있음
+
+    menuIcon.addEventListener('click', () => {
+      if (isOpen) {
+        sideMenu.style.left = '-25%'; //열려있으면 닫고
+      }  else {
+        sideMenu.style.left = '0%'; //닫혀있으면 엶
+      }
+    isOpen = !isOpen;             //열림 <-> 닫힘 토글해줌
+    menuIcon.classList.toggle('change');      //아이콘 바꿔줌
+    });  
+  </script>
+
 </body>
 
 </html>
