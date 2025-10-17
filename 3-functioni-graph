@@ -1,173 +1,180 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>3차 함수 그래프 생성기</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body {
-font-family: sans-serif;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-margin-top: 50px;
-}
-.container {
-width: 80%;
-max-width: 800px;
-}
-.input-group {
-margin-bottom: 20px;
-display: flex;
-gap: 10px;
-align-items: center;
-flex-wrap: wrap;
-}
-input {
-width: 80px;
-padding: 5px;
-}
-button {
-padding: 8px 15px;
-cursor: pointer;
-}
-</style>
+    <title>3차 함수 그래프 생성기</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        input {
+            width: 80px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-<h2>3차 함수 그래프 </h2>
-<p>함수: <strong>y = a(x-b)(x-c)(x-d)</strong></p>
+    <div class="container">
+        <h2>3차 함수 그래프 </h2>
+        <p>함수: <strong>y = a(x-b)(x-c)(x-d)</strong></p>
 
-<div class="input-group">
-<span>a:</span><input type="number" id="a" value="0.1">
-<span>b:</span><input type="number" id="b" value="-8">
-<span>c:</span><input type="number" id="c" value="2">
-<span>d:</span><input type="number" id="d" value="9">
-<button onclick="drawChart()">그래프 그리기</button>
-</div>
+        <div class="input-group">
+            <span>a:</span><input type="number" id="a" value="0.1">
+            <span>b:</span><input type="number" id="b" value="-8">
+            <span>c:</span><input type="number" id="c" value="2">
+            <span>d:</span><input type="number" id="d" value="9">
+            <button onclick="drawChart()">그래프 그리기</button>
+        </div>
 
-<canvas id="myChart"></canvas>
-</div>
+        <canvas id="myChart"></canvas>
+    </div>
 
-<script>
-let chart;
+    <script>
+        let chart;
 
-function drawChart() {
-const a = parseFloat(document.getElementById('a').value);
-const b = parseFloat(document.getElementById('b').value);
-const c = parseFloat(document.getElementById('c').value);
-const d = parseFloat(document.getElementById('d').value);
+        function drawChart() {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const d = parseFloat(document.getElementById('d').value);
 
-const f = (x) => a * (x - b) * (x - c) * (x - d);
+            const f = (x) => a * (x - b) * (x - c) * (x - d);
 
-const A = 3 * a;
-const B = -2 * a * (b + c + d);
-const C = a * (b * c + c * d + d * b);
-const discriminant = B * B - 4 * A * C;
+            const A = 3 * a;
+            const B = -2 * a * (b + c + d);
+            const C = a * (b * c + c * d + d * b);
+            const discriminant = B * B - 4 * A * C;
 
-let minY, maxY;
+            let minY, maxY;
 
-if (discriminant > 0) {
-const x1 = (-B + Math.sqrt(discriminant)) / (2 * A);
-const x2 = (-B - Math.sqrt(discriminant)) / (2 * A);
-const y1 = f(x1);
-const y2 = f(x2);
-minY = Math.min(y1, y2);
-maxY = Math.max(y1, y2);
-} else {
-minY = -5;
-maxY = 5;
-}
+            if (discriminant > 0) {
+                const x1 = (-B + Math.sqrt(discriminant)) / (2 * A);
+                const x2 = (-B - Math.sqrt(discriminant)) / (2 * A);
+                const y1 = f(x1);
+                const y2 = f(x2);
+                minY = Math.min(y1, y2);
+                maxY = Math.max(y1, y2);
+            } else {
+                minY = -5;
+                maxY = 5;
+            }
 
-let padding = (maxY - minY) * 0.15;
-if (padding < 2) padding = 2;
+            let padding = (maxY - minY) * 0.15;
+            if (padding < 2) padding = 2;
 
-let desiredMin = minY - padding;
-let desiredMax = maxY - padding;
+            let desiredMin = minY - padding;
+            let desiredMax = maxY - padding;
 
-const yAxisMin = Math.min(desiredMin, -10);
-const yAxisMax = Math.max(desiredMax, 10);
+            const yAxisMin = Math.min(desiredMin, -10);
+            const yAxisMax = Math.max(desiredMax, 10);
 
-const data = {
-labels: [],
-datasets: [{
-label: `y = ${a}(x - ${b})(x - ${c})(x - ${d})`,
-data: [],
-borderColor: 'rgba(153, 102, 255, 1)',
-borderWidth: 2,
-fill: false,
-tension: 0.1,
-pointRadius: 0
-}]
-};
+            const data = {
+                labels: [],
+                datasets: [{
+                    label: `y = ${a}(x - ${b})(x - ${c})(x - ${d})`,
+                    data: [],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 0
+                }]
+            };
 
-const roots = [b, c, d];
-const minRoot = Math.min(...roots);
-const maxRoot = Math.max(...roots);
-const rangePadding = Math.max(5, (maxRoot - minRoot) * 0.5);
-const startX = minRoot - rangePadding;
-const endX = maxRoot + rangePadding;
+            const roots = [b, c, d];
+            const minRoot = Math.min(...roots);
+            const maxRoot = Math.max(...roots);
+            const rangePadding = Math.max(5, (maxRoot - minRoot) * 0.5);
+            const startX = minRoot - rangePadding;
+            const endX = maxRoot + rangePadding;
 
-for (let x = startX; x <= endX; x += 0.1) {
-data.labels.push(x.toFixed(1));
-data.datasets[0].data.push(f(x));
-}
+            for (let x = startX; x <= endX; x += 0.1) {
+                data.labels.push(x.toFixed(1));
+                data.datasets[0].data.push(f(x));
+            }
 
-const ctx = document.getElementById('myChart').getContext('2d');
+            const ctx = document.getElementById('myChart').getContext('2d');
 
-if (chart) {
-chart.destroy();
-}
+            if (chart) {
+                chart.destroy();
+            }
 
-chart = new Chart(ctx, {
-type: 'line',
-data: data,
-options: {
-scales: {
-x: {
-title: { display: true, text: 'x' },
-grid: {
-zeroLineWidth: 3,
-zeroLineColor: 'rgba(0, 0, 0, 1)'
-},
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'x' },
+                            grid: {
+                                zeroLineWidth: 3,
+                                zeroLineColor: 'rgba(0, 0, 0, 1)'
+                            },
 
-ticks: {
-callback: function(value, index, ticks) {
+                            ticks: {
+                                callback: function (value, index, ticks) {
 
-if (Math.floor(value) === value) {
-return value;
-}
-}
-}
-},
-y: {
-title: { display: true, text: 'y' },
-min: yAxisMin,
-max: yAxisMax,
-grid: {
-zeroLineWidth: 3,
-zeroLineColor: 'rgba(0, 0, 0, 1)'
-},
+                                    if (Math.floor(value) === value) {
+                                        return value;
+                                    }
+                                }
+                            }
+                        },
+                        y: {
+                            title: { display: true, text: 'y' },
+                            min: yAxisMin,
+                            max: yAxisMax,
+                            grid: {
+                                zeroLineWidth: 3,
+                                zeroLineColor: 'rgba(0, 0, 0, 1)'
+                            },
 
-ticks: {
-callback: function(value, index, ticks) {
+                            ticks: {
+                                callback: function (value, index, ticks) {
 
-if (Math.floor(value) === value) {
-return value;
-}
-}
-}
-}
-},
-responsive: true,
-maintainAspectRatio: true
-}
-});
-}
+                                    if (Math.floor(value) === value) {
+                                        return value;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        }
 
-window.onload = drawChart;
-</script>
+        window.onload = drawChart;
+    </script>
 
 </body>
+
 </html>
